@@ -6,11 +6,69 @@
 /*   By: mshazaib <mshazaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 19:24:07 by mshazaib          #+#    #+#             */
-/*   Updated: 2023/08/06 18:37:49 by mshazaib         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:51:21 by mshazaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+int	address(unsigned long int Li)
+{
+	char *hexadecimalbase;
+	int	i;
+	hexadecimalbase = "0123456789abcdef";
+	i = 0;
+
+	if(Li > 15)
+		i += address(Li / 16);
+	i += ftt_printchar(hexadecimalbase[Li % 16]);
+	return(i);
+ 
+}
+
+int ftt_printpointer(void *var)
+{
+	unsigned long int nbr;
+	int l;
+	
+	nbr = (unsigned long int)var;
+	l = 0;
+	l += ftt_printstring("0x");
+	l += address(nbr);
+	return(l);
+}
+
+int ftt_printstring(const char * c)
+{
+	int	str_len;
+
+	if (!c)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	str_len = ftt_strlen(c);
+	write(1, c, str_len);
+	return (str_len);
+}
+
+int	ftt_strlen(char const *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	ftt_printchar(int c)
+{
+	write(1, &c, 1);
+	return(c);
+}	
 
 int	ftt_putchar(int ch, int fd)
 {
@@ -95,4 +153,24 @@ int	ftt_putunsignednbr_fd(unsigned int n, int fd)
 		count += ftt_putnbr_fd(n % 10, fd);
 	}
 	return (count);
+}
+
+int ftt_printhex(int nbr, char identifier)
+{
+	char *hexadecimalbase;
+	int	i;
+	unsigned int num;
+	
+	if (identifier == 'x')
+		hexadecimalbase = "0123456789abcdef";
+	else
+		hexadecimalbase = "0123456789ABCDEF";
+	i = 0;
+	num = (unsigned int)nbr;
+
+	if(num > 15)
+		i += ftt_printhex(num / 16, identifier);
+	i += ftt_printchar(hexadecimalbase[num % 16]);
+	return(i);
+	
 }

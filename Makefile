@@ -1,4 +1,4 @@
-NAME = libftprinft.a
+NAME = libftprintf.a
 
 FILES = ft_printf.c ft_printf_helpers.c
 
