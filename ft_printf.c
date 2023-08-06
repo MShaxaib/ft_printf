@@ -6,11 +6,11 @@
 /*   By: mshazaib <mshazaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:18:35 by mshazaib          #+#    #+#             */
-/*   Updated: 2023/08/06 20:31:32 by mshazaib         ###   ########.fr       */
+/*   Updated: 2023/08/06 21:27:28 by mshazaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	formatchecker(const char *format, va_list arg, int i)
 {
