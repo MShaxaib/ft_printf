@@ -1,6 +1,8 @@
 NAME = libftprintf.a
 
-FILES = ft_printf.c ft_printf_helpers.c
+FILES = ft_printf.c \
+		ft_printf_helpers.c \
+		ftt_printbointers.c 
 
 OBJS = $(FILES:.c=.o)
 # BONUS_OBJS = $(BONUS_FILES:.c=.o)
@@ -10,7 +12,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rus $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 # bonus: $(OBJS) $(BONUS_OBJS)
 # 	ar rus $(NAME) $(OBJS) $(BONUS_OBJS)

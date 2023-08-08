@@ -6,7 +6,7 @@
 /*   By: mshazaib <mshazaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:18:35 by mshazaib          #+#    #+#             */
-/*   Updated: 2023/08/06 21:27:28 by mshazaib         ###   ########.fr       */
+/*   Updated: 2023/08/08 21:17:08 by mshazaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	formatchecker(const char *format, va_list arg, int i)
 	else if (format[i] == 'c')
 		return (ftt_putchar(((char)va_arg(arg, int)), 1));
 	else if (format[i] == 'd')
-		return (ftt_putnbr_fd(((int)va_arg(arg, int)), 1));
+		return (ftt_putnbr(va_arg(arg, int), 1));
 	else if (format[i] == 'i')
-		return (ftt_putnbr_fd(((int)va_arg(arg, int)), 1));
+		return (ftt_putnbr(va_arg(arg, int), 1));
 	else if (format[i] == 'p')
-		return (ftt_printpointer(va_arg(arg, void *)));
+		return ftt_printpointer(va_arg(arg, void *));
 	else if (format[i] == 'u')
 		return (ftt_putunsignednbr_fd(va_arg(arg, int), 1));
 	else if (format[i] == 'x')
@@ -35,7 +35,7 @@ int	formatchecker(const char *format, va_list arg, int i)
 	return (0);
 }
 
-int	ft_printf(char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	arg;
 	int		count;
