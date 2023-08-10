@@ -2,7 +2,8 @@ NAME = libftprintf.a
 
 FILES = ft_printf.c \
 		ft_printf_helpers.c \
-		ftt_printbointers.c 
+		ftt_printbointers.c \
+		ft_printf_helpers2.c 
 
 OBJS = $(FILES:.c=.o)
 # BONUS_OBJS = $(BONUS_FILES:.c=.o)
